@@ -6,7 +6,12 @@
 from math import sqrt
 
 class PrimeNumber:
-	gen = 2
+	def __init__(self, start=2):
+		if start >= 2:
+			self.gen = start
+		else:
+			raise Exception('Prime number must be greater than 2.')
+	
 	def next(self):
 		while not isPrime(self.gen):
 			self.gen += 1
@@ -28,10 +33,11 @@ def isPrime(n):
 	else:
 		return False
 
-def genNumPrimeList(num):
+def getNumPrimeList(num):
 	i = 0
 	p = PrimeNumber()
 	list = []
+	
 	while i < num:
 		list.append(p.next())
 		i += 1

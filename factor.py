@@ -14,6 +14,7 @@ def isFactor(num, factor):
 
 def getMaxFactorPower(num, factor):
 	power = 1
+	
 	while True:
 		if num % pow(factor, power) == 0:
 			power += 1
