@@ -12,6 +12,9 @@ class PrimeNumber:
 		else:
 			raise Exception('Prime number must be greater than 2.')
 	
+	def __iter__(self):
+		return self
+	
 	def next(self):
 		while not isPrime(self.gen):
 			self.gen += 1
@@ -62,6 +65,7 @@ def getPrimes(below, above=2, method='erato'):
 	
 	if method == 'brute':
 		return filter(isPrime, range(above, below + 1))
+	
 	elif method == 'erato':
 		result = []
 		listlen = below + 1
@@ -79,6 +83,7 @@ def getPrimes(below, above=2, method='erato'):
 			if mask[i] == True:
 				result.append(i)
 		return result
+	
 	elif method == 'atkin':
 		result = []
 		listlen = below + 1
@@ -105,5 +110,6 @@ def getPrimes(below, above=2, method='erato'):
 			if mask[i] == True:
 				result.append(i)
 		return result
+	
 	else:
 		raise Exception('No implementation named ' + repr(method) +  ' found.')

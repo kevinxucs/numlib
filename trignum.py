@@ -10,6 +10,9 @@ class TriangleNumber:
 		self.n = 0
 		self.add = 1
 	
+	def __iter__(self):
+		return self
+	
 	def next(self):
 		self.n += self.add
 		self.add += 1
