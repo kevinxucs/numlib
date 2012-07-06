@@ -3,7 +3,7 @@
 # 
 # module for calculating primes
 
-from math import sqrt
+import math
 
 class PrimeNumber:
 	def __init__(self, start=2):
@@ -28,7 +28,7 @@ class PrimeNumber:
 
 def isPrime(n):
 	if n > 1:
-		sqrtN = int(sqrt(n))
+		sqrtN = int(math.sqrt(n))
 		for i in xrange(2, sqrtN + 1):
 			if n % i == 0:
 				return False
@@ -47,17 +47,21 @@ def getNumPrimeList(num):
 	else:
 		return list
 
-# 'below' means less than or equal to.
-# 'above' means greater or equal to.
-# implementation includes brute-force 'brute', sieve of eratosthenes 'erato',
-# sieve of atkin 'atkin'.
-# suitable cases:
-# small prime list start from large number - brute
-# small and medium prime list - erato
-# large prime list - atkin
-# 
-# uses sieve of eratosthenes by default.
 def getPrimes(below, above=2, method='erato'):
+	"""return a list of primes.
+	'below' means less than or equal to.
+	(optional) 'above' means greater or equal to. 'above' is 2 by default.
+	(optional) 'method' means implementation, which includes 
+	brute-force 'brute', sieve of eratosthenes 'erato', 
+	sieve of atkin 'atkin'.
+	
+	suitable cases:
+	small prime list start from large number - brute
+	small and medium prime list - erato
+	large prime list - atkin
+	 
+	uses sieve of eratosthenes if no parameter for 'method' provided.
+	"""
 	if above < 2:
 		raise Exception('Prime numbers must be greater or equal to 2.')
 	elif above >= below:
@@ -85,12 +89,26 @@ def getPrimes(below, above=2, method='erato'):
 		return result
 	
 	elif method == 'atkin':
-		result = []
-		listlen = below + 1
-		sqrtlimit = int(sqrt(below)) + 1
-		mask = listlen * [False]
-		mask[2] = True
-		mask[3] = True
+		return getPrimesAtkin(below, above, False)
+	
+	else:
+		raise Exception('No implementation named ' + repr(method) + ' found.')
+
+def getPrimesAtkin(below, above=2, thread=False):
+	"""sieve of atkin implementation of getPrimes.
+	'below' means less than or equal to.
+	(optional) 'above' means greater or equal to. 'above' is 2 by default.
+	(optional) 'thread' means enable thread or not. It's disable by default. 
+	NOTICE: threading support is totally experimental.
+	"""
+	result = []
+	listlen = below + 1
+	sqrtlimit = int(math.sqrt(below)) + 1
+	mask = listlen * [False]
+	mask[2] = True
+	mask[3] = True
+	
+	if thread == False:
 		for x in xrange(1, sqrtlimit):
 			for y in xrange(1, sqrtlimit):
 				n = 4 * x * x + y * y
@@ -102,14 +120,66 @@ def getPrimes(below, above=2, method='erato'):
 				n = 3 * x * x - y * y
 				if x > y and n <= below and n % 12 == 11:
 					mask[n] = not mask[n]
-		for n in xrange(5, sqrtlimit):
-			if mask[n] == True:
-				for k in xrange(n * n, listlen, n * n):
-					mask[k] = False
-		for i in xrange(above, listlen):
-			if mask[i] == True:
-				result.append(i)
-		return result
 	
 	else:
-		raise Exception('No implementation named ' + repr(method) +  ' found.')
+		import threading
+		class Thread1(threading.Thread):
+			def __init__(self, mask, sqrtlimit):
+				threading.Thread.__init__(self)
+				self.mask = mask
+				self.sqrtlimit = sqrtlimit
+			
+			def run(self):
+				for x in xrange(1, self.sqrtlimit):
+					for y in xrange(1, self.sqrtlimit):
+						n = 4 * x * x + y * y
+						if n <= below and (n % 12 == 1 or n % 12 == 5):
+							self.mask[n] = not self.mask[n]
+			
+		
+		class Thread2(threading.Thread):
+			def __init__(self, mask, sqrtlimit):
+				threading.Thread.__init__(self)
+				self.mask = mask
+				self.sqrtlimit = sqrtlimit
+
+			def run(self):
+				for x in xrange(1, self.sqrtlimit):
+					for y in xrange(1, self.sqrtlimit):
+						n = 3 * x * x + y * y
+						if n <= below and (n % 12 == 7):
+							self.mask[n] = not self.mask[n]
+			
+		
+		class Thread3(threading.Thread):
+			def __init__(self, mask, sqrtlimit):
+				threading.Thread.__init__(self)
+				self.mask = mask
+				self.sqrtlimit = sqrtlimit
+
+			def run(self):
+				for x in xrange(1, self.sqrtlimit):
+					for y in xrange(1, self.sqrtlimit):
+						n = 3 * x * x - y * y
+						if x > y and n <= below and n % 12 == 11:
+							self.mask[n] = not self.mask[n]
+			
+		
+		t1 = Thread1(mask, sqrtlimit)
+		t2 = Thread2(mask, sqrtlimit)
+		t3 = Thread3(mask, sqrtlimit)
+		t1.start()
+		t2.start()
+		t3.start()
+		t1.join()
+		t2.join()
+		t3.join()
+	
+	for n in xrange(5, sqrtlimit):
+		if mask[n] == True:
+			for k in xrange(n * n, listlen, n * n):
+				mask[k] = False
+	for i in xrange(above, listlen):
+		if mask[i] == True:
+			result.append(i)
+	return result
