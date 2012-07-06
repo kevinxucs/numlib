@@ -27,6 +27,9 @@ class PrimeNumber:
 	
 
 def isPrime(n):
+	"""Checking whether the number is prime or not.
+	'n' - number
+	"""
 	if n > 1:
 		sqrtN = int(math.sqrt(n))
 		for i in xrange(2, sqrtN + 1):
@@ -37,6 +40,9 @@ def isPrime(n):
 		return False
 
 def getNumPrimeList(num):
+	"""Return a list which contains specific amount of primes.
+	'num' - amount of primes.
+	"""
 	i = 0
 	p = PrimeNumber()
 	list = []
@@ -48,19 +54,19 @@ def getNumPrimeList(num):
 		return list
 
 def getPrimes(below, above=2, method='erato'):
-	"""return a list of primes.
-	'below' means less than or equal to.
-	(optional) 'above' means greater or equal to. 'above' is 2 by default.
-	(optional) 'method' means implementation, which includes 
+	"""Return a list of primes.
+	'below' - less than or equal to.
+	(optional) 'above' - greater or equal to. 'above' is 2 by default.
+	(optional) 'method' - implementation, which includes 
 	brute-force 'brute', sieve of eratosthenes 'erato', 
 	sieve of atkin 'atkin'.
 	
-	suitable cases:
+	Suitable cases:
 	small prime list start from large number - brute
 	small and medium prime list - erato
 	large prime list - atkin
 	 
-	uses sieve of eratosthenes if no parameter for 'method' provided.
+	Uses sieve of eratosthenes if no parameter for 'method' provided.
 	"""
 	if above < 2:
 		raise Exception('Prime numbers must be greater or equal to 2.')
@@ -95,11 +101,11 @@ def getPrimes(below, above=2, method='erato'):
 		raise Exception('No implementation named ' + repr(method) + ' found.')
 
 def getPrimesAtkin(below, above=2, thread=False):
-	"""sieve of atkin implementation of getPrimes.
-	'below' means less than or equal to.
-	(optional) 'above' means greater or equal to. 'above' is 2 by default.
-	(optional) 'thread' means enable thread or not. It's disable by default. 
-	NOTICE: threading support is totally experimental.
+	"""Sieve of atkin implementation of getPrimes.
+	'below' - less than or equal to.
+	(optional) 'above' - greater or equal to. 'above' is 2 by default.
+	(optional) 'thread' - enable thread or not. It's disable by default. 
+	NOTICE: Threading support is totally experimental.
 	"""
 	result = []
 	listlen = below + 1
