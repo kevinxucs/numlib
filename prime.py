@@ -39,7 +39,7 @@ def isPrime(n):
 	else:
 		return False
 
-def getNumPrimeList(num):
+def getNumPrimes(num):
 	"""Return a list which contains specific amount of primes.
 	'num' - amount of primes.
 	"""
