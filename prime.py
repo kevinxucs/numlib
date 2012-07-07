@@ -5,8 +5,11 @@
 
 import math
 
+# Prime number generator
 class PrimeNumber:
 	def __init__(self, start=2):
+		"""'start' - the number start from. 2 by default.
+		"""
 		if start >= 2:
 			self.gen = start
 		else:
@@ -16,14 +19,22 @@ class PrimeNumber:
 		return self
 	
 	def next(self):
+		"""Get next prime number.
+		"""
 		while not isPrime(self.gen):
 			self.gen += 1
 		else:
 			self.gen += 1
 			return (self.gen - 1)
 	
-	def reset(self):
-		self.gen = 2
+	def reset(self, start=2):
+		"""Reset generator.
+		'start' - the number start from. 2 by default.
+		"""
+		if start >= 2:
+			self.gen = start
+		else:
+			raise Exception('Prime number must be greater than 2.')
 	
 
 def isPrime(n):
