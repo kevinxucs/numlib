@@ -116,7 +116,8 @@ def getPrimesAtkin(below, above=2, thread=False):
 	'below' - less than or equal to.
 	(optional) 'above' - greater or equal to. 'above' is 2 by default.
 	(optional) 'thread' - enable thread or not. It's disable by default. 
-	NOTICE: Threading support is totally experimental.
+	NOTICE: Threading support is totally experimental. And it seems like 
+	slower than non-threaded version.
 	"""
 	result = []
 	listlen = below + 1
