@@ -91,8 +91,10 @@ def getFactors(num, primeFactor=False, proper=False, method='brute'):
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
 
-def getPerfectNumbers(below, above=220, method='brute'):
-	"""Return a list of perfect numbers.
+def getAmicableNumbers(below, above=220, method='brute'):
+	"""Return a list of amicable numbers.
+	http://en.wikipedia.org/wiki/Amicable_numbers
+	
 	'below' - smaller or equal to.
 	(optional) 'above' - greater or equal to. 220 default.
 	(optional) 'method' - implementation, which includes brute-force 'brute'.
