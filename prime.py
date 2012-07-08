@@ -81,8 +81,8 @@ def getPrimes(below, above=2, method='erato'):
 	"""
 	if above < 2:
 		raise Exception('Prime numbers must be greater or equal to 2.')
-	elif above >= below:
-		raise Exception("Error: 'above' is greater or equal to 'below'.")
+	elif above > below:
+		raise Exception("Error: 'above' is greater than 'below'.")
 	
 	if method == 'brute':
 		return filter(isPrime, range(above, below + 1))

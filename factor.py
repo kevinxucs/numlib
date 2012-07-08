@@ -90,3 +90,30 @@ def getFactors(num, primeFactor=False, proper=False, method='brute'):
 	else:
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
+
+def getPerfectNumbers(below, above=220, method='brute'):
+	"""Return a list of perfect numbers.
+	'below' - smaller or equal to.
+	(optional) 'above' - greater or equal to. 220 default.
+	(optional) 'method' - implementation, which includes brute-force 'brute'.
+	'brute' by default.
+	"""
+	if above < 0:
+		raise Exception('Perfect numbers must be positive integer.')
+	if above > below:
+		raise Exception("Error: 'above' is greater than 'below'.")
+	
+	if method == 'brute':
+		list = []
+		for num in xrange(above, below + 1):
+			if num not in list:
+				numb = sum(getFactors(num, primeFactor=False, proper=True))
+				numa = sum(getFactors(numb, primeFactor=False, proper=True))
+				if numa == num and numa != numb:
+					list.append(numa)
+					list.append(numb)
+		
+		return list
+	
+	else:
+		raise Exception('No implementation named ' + repr(method) + ' found.')
