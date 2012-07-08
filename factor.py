@@ -59,8 +59,7 @@ def getFactors(num, primeFactor=False, proper=False, method='brute'):
 	'num' - number.
 	(optional) 'primeFactor' - whether return prime factor only. 
 	False by default.
-	(optional) 'proper' - proper divisor, whether return factor that only 
-	evenly divides the number. False by default.
+	(optional) 'proper' - proper divisor. False by default.
 	(optional) 'method' - implementation, which includes brute-force 'brute'.
 	'brute' by default.
 	"""
@@ -68,22 +67,25 @@ def getFactors(num, primeFactor=False, proper=False, method='brute'):
 		limit = int(math.sqrt(num))
 		list = []
 		i = 1
+		
 		while i <= limit:
 			if num % i == 0:
 				list.append(i)
 				if primeFactor == True and not prime.isPrime(i):
 					list.pop()
-				if proper == True and not	integer.isEven(int(num / i)):
-					list.pop()
 			i += 1
+		
 		rlist = list[::-1]
 		for ri in rlist:
 			rfactor = int(num / ri)
 			list.append(rfactor)
 			if primeFactor == True and not prime.isPrime(rfactor):
 				list.pop()
-			if proper == True and not	integer.isEven(int(num / rfactor)):
-				list.pop()
+		
+		# proper divisors not include the number itself
+		if proper == True:
+			list.pop()
+		
 		return list
 	else:
 		raise Exception('No implementation named ' + repr(method) +  \
