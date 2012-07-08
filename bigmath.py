@@ -21,8 +21,22 @@ def numToDigitArray(num):
 		raise Exception("Error: number must be integer.")
 
 def numToShortDigitArray(num, digitArray):
-	length = len(digitArray)
-	
+	"""Parse number into provided digitArray. If the length of digitArray is
+	smaller than the length of num, then only last fitable digits will be 
+	filled into the array.
+	'num' - number.
+	'digitArray' - digit array that needed to be filled.
+	"""
+	if integer.isInt(num):
+		strArray = str(num)
+		rStrArray = strArray[::-1]
+		numLength = len(strArray)
+		digitLength = len(digitArray)
+		for i in xrange(0, numLength):
+			if i < digitLength:
+				digitArray[digitLength - i - 1] = int(rStrArray[i])
+	else:
+		raise Exception("Error: number must be integer.")
 
 def digitArrayToNum(digitArray):
 	"""Return the number which the digitArray represents.
