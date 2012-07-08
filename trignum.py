@@ -3,7 +3,7 @@
 # 
 # module for calculating triangle numbers
 
-from math import sqrt
+import math
 
 class TriangleNumber:
 	def __init__(self):
@@ -24,7 +24,7 @@ class TriangleNumber:
 	
 
 def isTriangleNumber(n):
-	delta = sqrt(8 * n + 1)
+	delta = math.sqrt(8 * n + 1)
 	
 	if isInt(delta):
 		x = (delta / 2) - 0.5

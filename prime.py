@@ -39,7 +39,7 @@ class PrimeNumber:
 
 def isPrime(n):
 	"""Checking whether the number is prime or not.
-	'n' - number
+	'n' - number.
 	"""
 	if n > 1:
 		sqrtN = int(math.sqrt(n))
