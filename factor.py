@@ -41,7 +41,7 @@ def getFactorNum(num, method='brute'):
 	if method == 'brute':
 		return len(getFactors(num))
 	elif method == 'prime':
-		pflist = getFactors(num, primeFactor=True, evenlyDivide=False)
+		pflist = getFactors(num, primeFactor=True, proper=False)
 		d = 1
 		if len(pflist) > 0:
 			for pf in pflist:
@@ -54,13 +54,13 @@ def getFactorNum(num, method='brute'):
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
 
-def getFactors(num, primeFactor=False, evenlyDivide=False, method='brute'):
+def getFactors(num, primeFactor=False, proper=False, method='brute'):
 	"""Return a list of factors for the number given.
 	'num' - number.
 	(optional) 'primeFactor' - whether return prime factor only. 
 	False by default.
-	(optional) 'evenlyDivide' - whether return factor that only evenly 
-	divides the number. False by default.
+	(optional) 'proper' - proper divisor, whether return factor that only 
+	evenly divides the number. False by default.
 	(optional) 'method' - implementation, which includes brute-force 'brute'.
 	'brute' by default.
 	"""
@@ -73,7 +73,7 @@ def getFactors(num, primeFactor=False, evenlyDivide=False, method='brute'):
 				list.append(i)
 				if primeFactor == True and not prime.isPrime(i):
 					list.pop()
-				if evenlyDivide == True and not	integer.isEven(int(num / i)):
+				if proper == True and not	integer.isEven(int(num / i)):
 					list.pop()
 			i += 1
 		rlist = list[::-1]
@@ -82,7 +82,7 @@ def getFactors(num, primeFactor=False, evenlyDivide=False, method='brute'):
 			list.append(rfactor)
 			if primeFactor == True and not prime.isPrime(rfactor):
 				list.pop()
-			if evenlyDivide == True and not	integer.isEven(int(num / rfactor)):
+			if proper == True and not	integer.isEven(int(num / rfactor)):
 				list.pop()
 		return list
 	else:
