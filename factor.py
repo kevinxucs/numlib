@@ -4,7 +4,7 @@
 # module for calculating factors
 
 import math
-import prime
+import prime, integer
 
 def isFactor(num, factor):
 	"""Judge whether the factor given is the proper factor of the number.
@@ -41,7 +41,7 @@ def getFactorNum(num, method='brute'):
 	if method == 'brute':
 		return len(getFactors(num))
 	elif method == 'prime':
-		pflist = getFactors(num, primeFactor=True)
+		pflist = getFactors(num, primeFactor=True, evenlyDivide=False)
 		d = 1
 		if len(pflist) > 0:
 			for pf in pflist:
@@ -54,11 +54,15 @@ def getFactorNum(num, method='brute'):
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
 
-def getFactors(num, primeFactor=False, method='brute'):
+def getFactors(num, primeFactor=False, evenlyDivide=False, method='brute'):
 	"""Return a list of factors for the number given.
 	'num' - number.
-	(optional) 'primeFactor' - whether return prime factor only.
+	(optional) 'primeFactor' - whether return prime factor only. 
+	False by default.
+	(optional) 'evenlyDivide' - whether return factor that only evenly 
+	divides the number. False by default.
 	(optional) 'method' - implementation, which includes brute-force 'brute'.
+	'brute' by default.
 	"""
 	if method == 'brute':
 		limit = int(math.sqrt(num))
@@ -66,16 +70,20 @@ def getFactors(num, primeFactor=False, method='brute'):
 		i = 1
 		while i <= limit:
 			if num % i == 0:
-				if primeFactor == False or (primeFactor == True and \
-				prime.isPrime(i)):
-					list.append(i)
+				list.append(i)
+				if primeFactor == True and not prime.isPrime(i):
+					list.pop()
+				if evenlyDivide == True and not	integer.isEven(int(num / i)):
+					list.pop()
 			i += 1
 		rlist = list[::-1]
 		for ri in rlist:
 			rfactor = int(num / ri)
-			if primeFactor == False or (primeFactor == True and \
-			prime.isPrime(rfactor)):
-				list.append(rfactor)
+			list.append(rfactor)
+			if primeFactor == True and not prime.isPrime(rfactor):
+				list.pop()
+			if evenlyDivide == True and not	integer.isEven(int(num / rfactor)):
+				list.pop()
 		return list
 	else:
 		raise Exception('No implementation named ' + repr(method) +  \
