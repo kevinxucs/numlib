@@ -54,6 +54,9 @@ def digitArrayToNum(digitArray):
 	
 	return num
 
-def bigpow(x, y, digits):
-	rd = digits * [0]
+def bigpow(x, y):
+	total = 1
+	for c in xrange(0, y):
+		total *= x
 	
+	return total
