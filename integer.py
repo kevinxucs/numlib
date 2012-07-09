@@ -21,3 +21,5 @@ def isEven(n):
 		return True
 	else:
 		return False
+
+getBinStr = lambda x: x > 0 and str(bin(x))[2:] or "-" + str(bin(x))[3:]
