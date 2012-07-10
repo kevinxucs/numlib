@@ -23,9 +23,14 @@ class TriangleNumber:
 		self.add = 1
 	
 
+def getTriangleNumber(n):
+	"""Get n-th triangle number.
+	"""
+	return int(n * (n + 1) / 2)
+
+
 def isTriangleNumber(n):
 	delta = math.sqrt(8 * n + 1)
-	
 	if isInt(delta):
 		x = (delta / 2) - 0.5
 		if isInt(x) and x > 0:
