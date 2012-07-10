@@ -4,6 +4,7 @@
 # module for calculating triangle numbers
 
 import math
+import numlib.integer
 
 class TriangleNumber:
 	def __init__(self):
@@ -34,9 +35,9 @@ def isTriangleNumber(n):
 	'n' - number.
 	"""
 	delta = math.sqrt(8 * n + 1)
-	if isInt(delta):
+	if integer.isInt(delta):
 		x = (delta / 2) - 0.5
-		if isInt(x) and x > 0:
+		if integer.isInt(x) and x > 0:
 			return int(x)
 	else:
 		return False
