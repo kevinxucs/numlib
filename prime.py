@@ -50,6 +50,20 @@ def isPrime(n):
 	else:
 		return False
 
+def isCircularPrime(n):
+	"""Checking whether the number is circular prime or not.
+	'n' - number.
+	"""
+	strnum = str(n)
+	strlen = len(strnum)
+	for st in xrange(1, strlen + 1):
+		num = int(strnum[st:] + strnum[:st])
+		if isPrime(num) == False:
+			return False
+	else:
+		return True
+
+
 def getNumPrimes(num):
 	"""Return a list which contains specific amount of primes.
 	'num' - amount of primes.
