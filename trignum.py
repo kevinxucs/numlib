@@ -4,7 +4,7 @@
 # module for calculating triangle numbers
 
 import math
-import numlib.integer
+import integer
 
 class TriangleNumber:
 	def __init__(self):
