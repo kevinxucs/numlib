@@ -30,6 +30,9 @@ def getTriangleNumber(n):
 
 
 def isTriangleNumber(n):
+	"""Determine whether is triangle number.
+	'n' - number.
+	"""
 	delta = math.sqrt(8 * n + 1)
 	if isInt(delta):
 		x = (delta / 2) - 0.5
