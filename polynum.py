@@ -53,7 +53,7 @@ class PentagonalNumber:
 		return self
 	
 	def next(self):
-		self.n += seld.add
+		self.n += self.add
 		seld.add += 3
 		return self.n
 	
@@ -77,6 +77,43 @@ def isPentagonalNumber(n):
 	if integer.isInt(delta):
 		x = (delta + 1) / 6
 		if integer.isInt(x) and x > 0:
-			return int(n)
+			return int(x)
+	else:
+		return False
+
+class HexagonalNumber:
+	def __init__(self):
+		self.n = 0
+		self.add = 1
+	
+	def __iter__(self):
+		return self
+	
+	def next(self):
+		self.n += self.add
+		self.add += 4
+		return self.n
+	
+	def reset(self):
+		self.n = 0
+		self.add = 1
+	
+
+def getHexagonalNumber(n):
+	"""Get n-th hexagonal number.
+	"""
+	return int(n * (2 * n - 1))
+
+def isHexagonalNumber(n):
+	"""Determine whether n is hexagonal number.
+	Return False if 'n' is not hexagonal number, else return the position of 
+	'n' in the hexagonal number sequence.
+	'n' - number.
+	"""
+	delta = math.sqrt(8 * n + 1)
+	if integer.isInt(delta):
+		x = (delta + 1) / 4
+		if integer.isInt(x) and x > 0:
+			return int(x)
 	else:
 		return False
