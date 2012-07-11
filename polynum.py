@@ -102,13 +102,13 @@ class HexagonalNumber:
 		self.add = 1
 	
 	@classmethod
-	def getHexagonalNumber(n):
+	def getHexagonalNumber(self, n):
 		"""Get n-th hexagonal number.
 		"""
 		return int(n * (2 * n - 1))
 	
 	@classmethod
-	def isHexagonalNumber(n):
+	def isHexagonalNumber(self, n):
 		"""Determine whether n is hexagonal number.
 		Return False if 'n' is not hexagonal number, else return the position of 
 		'n' in the hexagonal number sequence.
