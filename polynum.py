@@ -1,7 +1,7 @@
 # integer.py
 # created by Kaiwen Xu
 # 
-# module for calculating triangle numbers
+# module for calculating polygonal numbers
 
 import math
 import integer
