@@ -60,3 +60,17 @@ def bigpow(x, y):
 		total *= x
 	
 	return total
+
+def digFromFractGenerator(numerator, denominator):
+	"""Return a generator of digits from a fraction, only digits after decimal
+	point are generated.
+	'numerator' - numerator of fraction.
+	'denominator' - denominator of fraction.
+	"""
+	if numerator > denominator:
+		numerator = numerator % denominator
+	
+	while numerator != 0:
+		numerator = numerator * 10
+		yield int(numerator/denominator)
+		numerator = numerator % denominator
