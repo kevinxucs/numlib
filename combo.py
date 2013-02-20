@@ -17,11 +17,9 @@ def isPermutations(lst):
 				elements.add(digit)
 		else:
 			if len(num) != length:
-#				print "length not equal"
 				return False
 			for digit in num:
 				if digit not in elements:
-#					print repr(digit) + "not in " + repr(elements)
 					return False
 	else:
 		return True
