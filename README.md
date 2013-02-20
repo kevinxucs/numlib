@@ -8,7 +8,7 @@ Originally hosted on [Google Code].
 
 ## Copyright
 
-I hold no copyright over those code. You can do whatever you want.
+All the code in this project is on public domain. I hold no copyright over this. You can do whatever you want.
 
 [Project Euler]: http://projecteuler.net/
 [Google Code]: http://code.google.com/p/python-numlib/
