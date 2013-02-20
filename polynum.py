@@ -1,4 +1,4 @@
-# integer.py
+# polynum.py
 # created by Kaiwen Xu
 # 
 # module for calculating polygonal numbers
