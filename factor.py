@@ -7,7 +7,7 @@ import math
 import prime, integer
 
 def isFactor(num, factor):
-	"""Judge whether the factor given is the proper factor of the number.
+	"""Determine whether the factor given is the proper factor of the number.
 	'num' - number.
 	'factor' - factor.
 	"""
