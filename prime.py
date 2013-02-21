@@ -12,6 +12,7 @@ class PrimeNumber:
 		"""
 		if start >= 2:
 			self.gen = start
+			self.start = start
 		else:
 			raise Exception('Prime number must be greater than 2.')
 	
@@ -27,14 +28,18 @@ class PrimeNumber:
 			self.gen += 1
 			return (self.gen - 1)
 	
-	def reset(self, start=2):
+	def reset(self, start=None):
 		"""Reset generator.
 		'start' - the number start from. 2 by default.
 		"""
-		if start >= 2:
-			self.gen = start
+		if start == None:
+			self.gen = self.start
 		else:
-			raise Exception('Prime number must be greater than 2.')
+			if start >= 2:
+				self.gen = start
+				self.start = start
+			else:
+				raise Exception('Prime number must be greater than 2.')
 	
 
 def isPrime(n):
