@@ -9,6 +9,7 @@ lst6 = [123, 321, 132, 213, 412]
 lst7 = [123, 321, 132, 213, '412']
 lst8 = [123, 321, 132, '213']
 lst9 = ["123", "321", "132", "213"]
+lst10 = [6556, 5556, 6665, 5565]
 
 print(repr(lst1) + ": " + repr(isPermutations(lst1)))
 print(repr(lst2) + ": " + repr(isPermutations(lst2)))
@@ -19,3 +20,4 @@ print(repr(lst6) + ": " + repr(isPermutations(lst6)))
 print(repr(lst7) + ": " + repr(isPermutations(lst7)))
 print(repr(lst8) + ": " + repr(isPermutations(lst8)))
 print(repr(lst9) + ": " + repr(isPermutations(lst9)))
+print(repr(lst10) + ": " + repr(isPermutations(lst10)))
