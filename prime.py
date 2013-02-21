@@ -5,7 +5,7 @@
 
 import math
 
-# Prime number generator
+# Prime number generator (non-stop)
 class PrimeNumber:
 	def __init__(self, start=2):
 		"""'start' - the number start from. 2 by default.

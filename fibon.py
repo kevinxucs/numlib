@@ -3,6 +3,7 @@
 # 
 # module for calculating Fibonacci number
 
+# Fibonacci number generator (non-stop)
 class FibonNumber():
 	def __init__(self, seed1=0, seed2=1):
 		self.s1 = seed1
