@@ -43,7 +43,6 @@ class TriangleNumber:
 				return int(x)
 		else:
 			return False
-	
 
 class PentagonalNumber:
 	def __init__(self):
@@ -82,7 +81,6 @@ class PentagonalNumber:
 				return int(x)
 		else:
 			return False
-	
 
 class HexagonalNumber:
 	def __init__(self):
@@ -121,4 +119,3 @@ class HexagonalNumber:
 				return int(x)
 		else:
 			return False
-	
