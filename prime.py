@@ -9,7 +9,7 @@ import integer
 # Prime number generator (non-stop)
 class PrimeNumber:
 	def __init__(self, start=2):
-		"""'start' - the number start from. 2 by default.
+		"""'start' - the number starts from. 2 by default.
 		"""
 		if integer.isInt(start) and start >= 2:
 			self.gen = start
@@ -31,7 +31,7 @@ class PrimeNumber:
 	
 	def reset(self, start=None):
 		"""Reset generator.
-		'start' - the number start from. 2 by default.
+		'start' - if not set, reset to the start number which initialized with.
 		"""
 		if start == None:
 			self.gen = self.start
