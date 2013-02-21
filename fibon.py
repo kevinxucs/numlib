@@ -8,6 +8,8 @@ class FibonNumber():
 	def __init__(self, seed1=0, seed2=1):
 		self.s1 = seed1
 		self.s2 = seed2
+		self.seed1 = seed1
+		self.seed2 = seed2
 	
 	def __iter__(self):
 		return self
@@ -19,7 +21,15 @@ class FibonNumber():
 		self.s1 = s2
 		return s1
 	
-	def reset(self, seed1=0, seed2=1):
-		self.s1 = seed1
-		self.s2 = seed2
-	
+	def reset(self, seed1=None, seed2=None):
+		if seed1 == None:
+			self.s1 = self.seed1
+		else:
+			self.s1 = seed1
+			self.seed1 = seed1
+
+		if seed2 == None:
+			self.s2 = self.seed2
+		else:
+			self.s2 = seed2
+			self.seed2 = seed2
