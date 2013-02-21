@@ -1,7 +1,7 @@
 # integer.py
 # created by Kaiwen Xu
 # 
-# module for calculating integers
+# module related with integers
 
 # Integer generator (non-stop)
 class IntegerNumber:
