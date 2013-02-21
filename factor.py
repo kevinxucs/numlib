@@ -65,32 +65,32 @@ def getFactors(num, primeFactor=False, proper=False, nontrivial=False, method='b
 	"""
 	if method == 'brute':
 		limit = int(math.sqrt(num))
-		list = []
+		lst = []
 		i = 1
 		
 		while i <= limit:
 			if num % i == 0:
-				list.append(i)
-				if primeFactor == True and not prime.isPrime(i):
-					list.pop()
+				lst.append(i)
 			i += 1
 		
-		rlist = list[::-1]
-		for ri in rlist:
+		rlst = lst[::-1]
+		for ri in rlst:
 			rfactor = int(num / ri)
-			list.append(rfactor)
-			if primeFactor == True and not prime.isPrime(rfactor):
-				list.pop()
+			lst.append(rfactor)
 		
 		# proper divisors and non-trivial divisors do not include the number itself
 		if proper or nontrivial:
-			list.pop()
+			lst.pop()
 
 		# non-trivial divisors do not include 1
-		if nontrivial and list[0] == 1:
-			del list[0]
+		if nontrivial and lst[0] == 1:
+			del lst[0]
+
+		# delete non-prime factors
+		if primeFactor:
+			lst = filter(prime.isPrime, lst)
 		
-		return list
+		return lst
 	else:
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
