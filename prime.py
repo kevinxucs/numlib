@@ -14,7 +14,7 @@ class PrimeNumber:
 			self.gen = start
 			self.start = start
 		else:
-			raise Exception('Prime number must be greater than 2.')
+			raise ValueError('Prime number must be greater than 2.')
 	
 	def __iter__(self):
 		return self
@@ -39,7 +39,7 @@ class PrimeNumber:
 				self.gen = start
 				self.start = start
 			else:
-				raise Exception('Prime number must be greater than 2.')
+				raise ValueError('Prime number must be greater than 2.')
 	
 
 def isPrime(n):
