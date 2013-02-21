@@ -4,17 +4,18 @@
 # module for calculating primes
 
 import math
+import integer
 
 # Prime number generator (non-stop)
 class PrimeNumber:
 	def __init__(self, start=2):
 		"""'start' - the number start from. 2 by default.
 		"""
-		if start >= 2:
+		if integer.isInt(start) and start >= 2:
 			self.gen = start
 			self.start = start
 		else:
-			raise ValueError('Prime number must be greater than 2.')
+			raise ValueError('Start number must be an integer and not less than 2.')
 	
 	def __iter__(self):
 		return self
@@ -35,11 +36,11 @@ class PrimeNumber:
 		if start == None:
 			self.gen = self.start
 		else:
-			if start >= 2:
+			if integer.isInt(start) and start >= 2:
 				self.gen = start
 				self.start = start
 			else:
-				raise ValueError('Prime number must be greater than 2.')
+				raise ValueError('Start number must be an integer and not less than 2.')
 	
 
 def isPrime(n):
