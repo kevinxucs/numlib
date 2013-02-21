@@ -31,7 +31,6 @@ class IntegerNumber:
 			else:
 				raise ValueError("Start number must be an integer.") 
 
-
 def isInt(f):
 	try:
 		i = int(f)

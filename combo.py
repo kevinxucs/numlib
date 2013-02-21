@@ -29,8 +29,6 @@ def isPermutations(lst):
 					else:
 						e[digit] += 1
 				else:
-#					print "e: " + repr(e)
-#					print "elements: "+ repr(elements)
 					if e != elements:
 						return False
 	else:

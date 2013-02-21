@@ -41,7 +41,6 @@ class PrimeNumber:
 				self.start = start
 			else:
 				raise ValueError('Start number must be an integer and not less than 2.')
-	
 
 def isPrime(n):
 	"""Checking whether the number is prime or not.
@@ -68,7 +67,6 @@ def isCircularPrime(n):
 			return False
 	else:
 		return True
-
 
 def getNumPrimes(num):
 	"""Return a list which contains specific amount of primes.
@@ -173,7 +171,6 @@ def getPrimesAtkin(below, above=2, thread=False):
 						n = 4 * x * x + y * y
 						if n <= below and (n % 12 == 1 or n % 12 == 5):
 							self.mask[n] = not self.mask[n]
-			
 		
 		class Thread2(threading.Thread):
 			def __init__(self, mask, sqrtlimit):
@@ -187,7 +184,6 @@ def getPrimesAtkin(below, above=2, thread=False):
 						n = 3 * x * x + y * y
 						if n <= below and (n % 12 == 7):
 							self.mask[n] = not self.mask[n]
-			
 		
 		class Thread3(threading.Thread):
 			def __init__(self, mask, sqrtlimit):
@@ -201,7 +197,6 @@ def getPrimesAtkin(below, above=2, thread=False):
 						n = 3 * x * x - y * y
 						if x > y and n <= below and n % 12 == 11:
 							self.mask[n] = not self.mask[n]
-			
 		
 		t1 = Thread1(mask, sqrtlimit)
 		t2 = Thread2(mask, sqrtlimit)
