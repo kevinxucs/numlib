@@ -54,7 +54,7 @@ def getFactorNum(num, method='brute'):
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
 
-def getFactors(num, primeFactor=False, proper=False, method='brute'):
+def getFactors(num, primeFactor=False, proper=False, nontrivial=False, method='brute'):
 	"""Return a list of factors for the number given.
 	'num' - number.
 	(optional) 'primeFactor' - whether return prime factor only. 
@@ -82,9 +82,13 @@ def getFactors(num, primeFactor=False, proper=False, method='brute'):
 			if primeFactor == True and not prime.isPrime(rfactor):
 				list.pop()
 		
-		# proper divisors not include the number itself
-		if proper == True:
+		# proper divisors and non-trivial divisors do not include the number itself
+		if proper or nontrivial:
 			list.pop()
+
+		# non-trivial divisors do not include 1
+		if nontrivial and list[0] == 1:
+			del list[0]
 		
 		return list
 	else:
