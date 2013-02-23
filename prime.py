@@ -8,6 +8,7 @@ import integer
 
 # Prime number generator (non-stop)
 class PrimeNumber:
+
 	def __init__(self, start=2):
 		"""'start' - the number starts from. 2 by default.
 		"""
@@ -33,7 +34,7 @@ class PrimeNumber:
 		"""Reset generator.
 		'start' - if not set, reset to the start number which initialized with.
 		"""
-		if start == None:
+		if start is None:
 			self.gen = self.start
 		else:
 			if integer.isInt(start) and start >= 2:
@@ -41,6 +42,7 @@ class PrimeNumber:
 				self.start = start
 			else:
 				raise ValueError('Start number must be an integer and not less than 2.')
+
 
 def isPrime(n):
 	"""Checking whether the number is prime or not.
@@ -55,6 +57,7 @@ def isPrime(n):
 	else:
 		return False
 
+
 def isCircularPrime(n):
 	"""Checking whether the number is circular prime or not.
 	'n' - number.
@@ -63,10 +66,11 @@ def isCircularPrime(n):
 	strlen = len(strnum)
 	for st in xrange(1, strlen + 1):
 		num = int(strnum[st:] + strnum[:st])
-		if isPrime(num) == False:
+		if not isPrime(num):
 			return False
 	else:
 		return True
+
 
 def getNumPrimes(num):
 	"""Return a list which contains specific amount of primes.
@@ -81,6 +85,7 @@ def getNumPrimes(num):
 		i += 1
 	else:
 		return list
+
 
 def getPrimes(below, above=2, method='erato'):
 	"""Return a list of primes.
@@ -112,14 +117,14 @@ def getPrimes(below, above=2, method='erato'):
 		mask[0] = False
 		mask[1] = False
 		for i in xrange(0, listlen):
-			if mask[i] == True:
+			if mask[i]:
 				rm = 2 * i
 				while rm <= below:
-					if mask[rm] == True:
+					if mask[rm]:
 						mask[rm] = False
 					rm += i
 		for i in xrange(above, listlen):
-			if mask[i] == True:
+			if mask[i]:
 				result.append(i)
 		return result
 	
@@ -128,6 +133,7 @@ def getPrimes(below, above=2, method='erato'):
 	
 	else:
 		raise Exception('No implementation named ' + repr(method) + ' found.')
+
 
 def getPrimesAtkin(below, above=2, thread=False):
 	"""Sieve of atkin implementation of getPrimes.
@@ -144,7 +150,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 	mask[2] = True
 	mask[3] = True
 	
-	if thread == False:
+	if not thread:
 		for x in xrange(1, sqrtlimit):
 			for y in xrange(1, sqrtlimit):
 				n = 4 * x * x + y * y
@@ -160,6 +166,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 	else:
 		import threading
 		class Thread1(threading.Thread):
+
 			def __init__(self, mask, sqrtlimit):
 				threading.Thread.__init__(self)
 				self.mask = mask
@@ -173,6 +180,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 							self.mask[n] = not self.mask[n]
 		
 		class Thread2(threading.Thread):
+
 			def __init__(self, mask, sqrtlimit):
 				threading.Thread.__init__(self)
 				self.mask = mask
@@ -186,6 +194,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 							self.mask[n] = not self.mask[n]
 		
 		class Thread3(threading.Thread):
+
 			def __init__(self, mask, sqrtlimit):
 				threading.Thread.__init__(self)
 				self.mask = mask
@@ -209,10 +218,11 @@ def getPrimesAtkin(below, above=2, thread=False):
 		t3.join()
 	
 	for n in xrange(5, sqrtlimit):
-		if mask[n] == True:
+		if mask[n]:
 			for k in xrange(n * n, listlen, n * n):
 				mask[k] = False
 	for i in xrange(above, listlen):
-		if mask[i] == True:
+		if mask[i]:
 			result.append(i)
 	return result
+

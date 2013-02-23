@@ -20,6 +20,7 @@ def numToDigitArray(num):
 	else:
 		raise Exception("Error: number must be integer.")
 
+
 def numToShortDigitArray(num, digitArray):
 	"""Parse number into provided digitArray. If the length of digitArray is
 	smaller than the length of num, then only last fitable digits will be 
@@ -38,6 +39,7 @@ def numToShortDigitArray(num, digitArray):
 	else:
 		raise Exception("Error: number must be integer.")
 
+
 def digitArrayToNum(digitArray):
 	"""Return the number which the digitArray represents.
 	'digitArray' - array of digits.
@@ -54,12 +56,14 @@ def digitArrayToNum(digitArray):
 	
 	return num
 
+
 def bigpow(x, y):
 	total = 1
 	for c in xrange(0, y):
 		total *= x
 	
 	return total
+
 
 def digFromFractGenerator(numerator, denominator):
 	"""Return a generator of digits from a fraction, only digits after decimal
@@ -74,3 +78,4 @@ def digFromFractGenerator(numerator, denominator):
 		numerator = numerator * 10
 		yield int(numerator/denominator)
 		numerator = numerator % denominator
+

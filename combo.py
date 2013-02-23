@@ -33,3 +33,4 @@ def isPermutations(lst):
 						return False
 	else:
 		return True
+

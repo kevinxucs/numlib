@@ -16,6 +16,7 @@ def isFactor(num, factor):
 	else:
 		return False
 
+
 def getMaxFactorPower(num, factor):
 	"""For given number and factor, returns the maximum power the factor can 
 	have to divide the number.
@@ -30,6 +31,7 @@ def getMaxFactorPower(num, factor):
 		else:
 			return power - 1
 
+
 def getFactorNum(num, method='brute'):
 	"""Return the amount of factors for the number given.
 	'num' - number.
@@ -43,7 +45,7 @@ def getFactorNum(num, method='brute'):
 	elif method == 'prime':
 		pflist = getFactors(num, primeFactor=True, proper=False)
 		d = 1
-		if len(pflist) > 0:
+		if pflist:
 			for pf in pflist:
 				d *= getMaxFactorPower(num, pf) + 1
 			return d
@@ -53,6 +55,7 @@ def getFactorNum(num, method='brute'):
 	else:
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
+
 
 def getFactors(num, primeFactor=False, proper=False, nontrivial=False, method='brute'):
 	"""Return a list of factors for the number given.
@@ -95,6 +98,7 @@ def getFactors(num, primeFactor=False, proper=False, nontrivial=False, method='b
 		raise Exception('No implementation named ' + repr(method) +  \
 		' found.')
 
+
 def getAmicableNumbers(below, above=220, method='brute'):
 	"""Return a list of amicable numbers.
 	http://en.wikipedia.org/wiki/Amicable_numbers
@@ -123,3 +127,4 @@ def getAmicableNumbers(below, above=220, method='brute'):
 	
 	else:
 		raise Exception('No implementation named ' + repr(method) + ' found.')
+

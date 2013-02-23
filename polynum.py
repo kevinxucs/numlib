@@ -7,6 +7,7 @@ import math
 import integer
 
 class TriangleNumber:
+
 	def __init__(self):
 		self.n = 0
 		self.add = 1
@@ -44,7 +45,9 @@ class TriangleNumber:
 		else:
 			return False
 
+
 class PentagonalNumber:
+
 	def __init__(self):
 		self.n = 0
 		self.add = 1
@@ -82,7 +85,9 @@ class PentagonalNumber:
 		else:
 			return False
 
+
 class HexagonalNumber:
+
 	def __init__(self):
 		self.n = 0
 		self.add = 1
@@ -119,3 +124,4 @@ class HexagonalNumber:
 				return int(x)
 		else:
 			return False
+
