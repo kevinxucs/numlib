@@ -142,7 +142,7 @@ def getPrimes(below, above=2, method='erato'):
 		return getPrimesAtkin(below, above, False)
 	
 	else:
-		raise RuntimeError('No implementation named ' + str(method) + ' found.')
+		raise RuntimeError(''.join(['No implementation named ', str(method), ' found.']))
 
 
 def getPrimesAtkin(below, above=2, thread=False):

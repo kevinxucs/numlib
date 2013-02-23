@@ -55,7 +55,7 @@ def digitArrayToNum(digitArray):
 	power = length - 1
 	for d in digitArray:
 		if d > 9 or d < 0:
-			raise Exception("Error: digits must be 0, 1, ... , 9.")
+			raise ValueError("Digits must be 0, 1, ... , 9.")
 		else:
 			num += d * pow(10, power)
 			power -= 1
