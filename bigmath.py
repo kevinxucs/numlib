@@ -20,7 +20,7 @@ def numToDigitArray(num):
 	
 		return digitArray
 	else:
-		raise Exception("Error: number must be integer.")
+		raise ValueError("Number must be integer.")
 
 
 def numToShortDigitArray(num, digitArray):
@@ -41,7 +41,7 @@ def numToShortDigitArray(num, digitArray):
 			if i < digitLength:
 				digitArray[digitLength - i - 1] = int(rStrArray[i])
 	else:
-		raise Exception("Error: number must be integer.")
+		raise ValueError("Number must be integer.")
 
 
 def digitArrayToNum(digitArray):

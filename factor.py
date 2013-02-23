@@ -60,7 +60,7 @@ def getFactorNum(num, method='brute'):
 			# means the number is a prime, which only has 2 divisors
 			return 2
 	else:
-		raise Exception('No implementation named ' + repr(method) +  \
+		raise RuntimeError('No implementation named ' + str(method) +  \
 		' found.')
 
 
@@ -108,7 +108,7 @@ def getFactors(num,
 		
 		return lst
 	else:
-		raise Exception('No implementation named ' + repr(method) +  \
+		raise RuntimeError('No implementation named ' + str(method) +  \
 		' found.')
 
 
@@ -123,9 +123,9 @@ def getAmicableNumbers(below, above=220, method='brute'):
 			   (default 'brute')
 	"""
 	if above < 0:
-		raise Exception('Perfect numbers must be positive integer.')
+		raise ValueError('Perfect numbers must be positive integer.')
 	if above > below:
-		raise Exception("Error: 'above' is greater than 'below'.")
+		raise ValueError("'above' is greater than 'below'.")
 	
 	if method == 'brute':
 		list = []
@@ -140,5 +140,5 @@ def getAmicableNumbers(below, above=220, method='brute'):
 		return list
 	
 	else:
-		raise Exception('No implementation named ' + repr(method) + ' found.')
+		raise RuntimeError('No implementation named ' + str(method) + ' found.')
 
