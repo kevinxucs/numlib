@@ -5,7 +5,9 @@
 
 def isPermutations(lst):
 	"""Check whether numbers in the given list are permutations.
-	'lst' - list of numbers.
+
+	Arguments:
+	lst -- list of numbers
 	"""
 	length = 0
 	elements = {}

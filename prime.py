@@ -10,7 +10,8 @@ import integer
 class PrimeNumber:
 
 	def __init__(self, start=2):
-		"""'start' - the number starts from. 2 by default.
+		"""Arguments:
+		start -- the number starts from (default 2)
 		"""
 		if integer.isInt(start) and start >= 2:
 			self.gen = start
@@ -22,7 +23,7 @@ class PrimeNumber:
 		return self
 	
 	def next(self):
-		"""Get next prime number.
+		"""Return next prime number.
 		"""
 		while not isPrime(self.gen):
 			self.gen += 1
@@ -32,7 +33,10 @@ class PrimeNumber:
 	
 	def reset(self, start=None):
 		"""Reset generator.
-		'start' - if not set, reset to the start number which initialized with.
+
+		Arguments:
+		start -- if not set, reset to the start number which initialized with
+				 (default None)
 		"""
 		if start is None:
 			self.gen = self.start
@@ -45,8 +49,10 @@ class PrimeNumber:
 
 
 def isPrime(n):
-	"""Checking whether the number is prime or not.
-	'n' - number.
+	"""Checking whether the number is prime.
+
+	Arguments:
+	n -- input number
 	"""
 	if n > 1:
 		sqrtN = int(math.sqrt(n))
@@ -59,8 +65,10 @@ def isPrime(n):
 
 
 def isCircularPrime(n):
-	"""Checking whether the number is circular prime or not.
-	'n' - number.
+	"""Checking whether the number is circular prime.
+
+	Arguments:
+	n -- input number
 	"""
 	strnum = str(n)
 	strlen = len(strnum)
@@ -74,7 +82,9 @@ def isCircularPrime(n):
 
 def getNumPrimes(num):
 	"""Return a list which contains specific amount of primes.
-	'num' - amount of primes.
+
+	Arguments:
+	num -- amount of primes
 	"""
 	i = 0
 	p = PrimeNumber()
@@ -89,23 +99,23 @@ def getNumPrimes(num):
 
 def getPrimes(below, above=2, method='erato'):
 	"""Return a list of primes.
-	'below' - less than or equal to.
-	(optional) 'above' - greater or equal to. 'above' is 2 by default.
-	(optional) 'method' - implementation, which includes 
-	brute-force 'brute', sieve of eratosthenes 'erato', 
-	sieve of atkin 'atkin'.
+
+	Arguments:
+	below	-- less than or equal to
+	above	-- greater or equal to (default 2)
+	method	-- implementation, which includes brute-force 'brute', 
+			   sieve of eratosthenes 'erato', sieve of atkin 'atkin'
+			   (default 'erato')
 	
 	Suitable cases:
-	small prime list start from large number - brute
-	small and medium prime list - erato
-	large prime list - atkin
-	 
-	Uses sieve of eratosthenes if no parameter for 'method' provided.
+	'brute'	-- small prime list start from large number
+	'erato'	-- small and medium prime list
+	'atkin'	-- large prime list
 	"""
 	if above < 2:
-		raise Exception('Prime numbers must be greater or equal to 2.')
+		raise ValueError('Prime numbers must be greater or equal to 2.')
 	elif above > below:
-		raise Exception("Error: 'above' is greater than 'below'.")
+		raise ValueError("'above' is greater than 'below'.")
 	
 	if method == 'brute':
 		return filter(isPrime, range(above, below + 1))
@@ -137,10 +147,14 @@ def getPrimes(below, above=2, method='erato'):
 
 def getPrimesAtkin(below, above=2, thread=False):
 	"""Sieve of atkin implementation of getPrimes.
-	'below' - less than or equal to.
-	(optional) 'above' - greater or equal to. 'above' is 2 by default.
-	(optional) 'thread' - enable thread or not. It's disable by default. 
-	NOTICE: Threading support is totally experimental. And it seems like 
+
+	Arguments:
+	below	-- less than or equal to
+	above	-- greater or equal to (default 2)
+	thread	-- enable thread (default False)
+
+	NOTICE:
+	Threading support is totally experimental. And it seems like 
 	slower than non-threaded version.
 	"""
 	result = []

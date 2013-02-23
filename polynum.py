@@ -26,16 +26,22 @@ class TriangleNumber:
 	
 	@classmethod
 	def getTriangleNumber(self, n):
-		"""Get n-th triangle number.
+		"""Return n-th triangle number.
+
+		Arguments:
+		n -- input number
 		"""
 		return int(n * (n + 1) / 2)
 	
 	@classmethod
 	def isTriangleNumber(self, n):
 		"""Determine whether is triangle number.
-		Return False if 'n' is not triangle number, else return the position of 
+		Return False if 'n' is not triangle number, 
+		else return the position of 
 		'n' in the triangle number sequence.
-		'n' - number.
+
+		Arguments:
+		n -- input number
 		"""
 		delta = math.sqrt(8 * n + 1)
 		if integer.isInt(delta):
@@ -66,16 +72,22 @@ class PentagonalNumber:
 	
 	@classmethod
 	def getPentagonalNumber(self, n):
-		"""Get n-th pentagonal number.
+		"""Return n-th pentagonal number.
+
+		Arguments:
+		n -- input number
 		"""
 		return int(n * (3 * n - 1) / 2)
 	
 	@classmethod
 	def isPentagonalNumber(self, n):
 		"""Determine whether n is pentagonal number.
-		Return False if 'n' is not pentagonal number, else return the position of 
+		Return False if 'n' is not pentagonal number, 
+		else return the position of 
 		'n' in the pentagonal number sequence.
-		'n' - number.
+
+		Arguments:
+		n -- input number
 		"""
 		delta = math.sqrt(24 * n + 1)
 		if integer.isInt(delta):
@@ -106,16 +118,21 @@ class HexagonalNumber:
 	
 	@classmethod
 	def getHexagonalNumber(self, n):
-		"""Get n-th hexagonal number.
+		"""Return n-th hexagonal number.
+
+		Arguments:
+		n -- input number
 		"""
 		return int(n * (2 * n - 1))
 	
 	@classmethod
 	def isHexagonalNumber(self, n):
 		"""Determine whether n is hexagonal number.
-		Return False if 'n' is not hexagonal number, else return the position of 
-		'n' in the hexagonal number sequence.
-		'n' - number.
+		Return False if 'n' is not hexagonal number, 
+		else return the position of 'n' in the hexagonal number sequence.
+
+		Arguments:
+		n -- input number
 		"""
 		delta = math.sqrt(8 * n + 1)
 		if integer.isInt(delta):

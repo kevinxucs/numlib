@@ -8,7 +8,9 @@ import integer
 
 def numToDigitArray(num):
 	"""Return an array of int which represent the number by digit.
-	'num' - number.
+
+	Arguments:
+	num -- input number
 	"""
 	if integer.isInt(num):
 		digitArray = []
@@ -25,8 +27,10 @@ def numToShortDigitArray(num, digitArray):
 	"""Parse number into provided digitArray. If the length of digitArray is
 	smaller than the length of num, then only last fitable digits will be 
 	filled into the array.
-	'num' - number.
-	'digitArray' - digit array that needed to be filled.
+
+	Arguments:
+	num			-- input number
+	digitArray	-- digit array that needed to be filled
 	"""
 	if integer.isInt(num):
 		strArray = str(num)
@@ -42,7 +46,9 @@ def numToShortDigitArray(num, digitArray):
 
 def digitArrayToNum(digitArray):
 	"""Return the number which the digitArray represents.
-	'digitArray' - array of digits.
+
+	Arguments:
+	digitArray -- array of digits
 	"""
 	num = 0
 	length = len(digitArray)
@@ -58,6 +64,8 @@ def digitArrayToNum(digitArray):
 
 
 def bigpow(x, y):
+	"""Return x ^ y.
+	"""
 	total = 1
 	for c in xrange(0, y):
 		total *= x
@@ -68,8 +76,10 @@ def bigpow(x, y):
 def digFromFractGenerator(numerator, denominator):
 	"""Return a generator of digits from a fraction, only digits after decimal
 	point are generated.
-	'numerator' - numerator of fraction.
-	'denominator' - denominator of fraction.
+
+	Arguments:
+	numerator	-- numerator of fraction
+	denominator	-- denominator of fraction
 	"""
 	if numerator > denominator:
 		numerator = numerator % denominator

@@ -8,8 +8,10 @@ import prime, integer
 
 def isFactor(num, factor):
 	"""Determine whether the factor given is the proper factor of the number.
-	'num' - number.
-	'factor' - factor.
+
+	Arguments:
+	num		-- input number
+	factor	-- factor
 	"""
 	if num % factor == 0:
 		return True
@@ -20,8 +22,10 @@ def isFactor(num, factor):
 def getMaxFactorPower(num, factor):
 	"""For given number and factor, returns the maximum power the factor can 
 	have to divide the number.
-	'num' - number.
-	'factor' - factor of the number.
+
+	Arguments:
+	num		-- input number
+	factor	-- factor of the number
 	"""
 	power = 1
 	
@@ -34,11 +38,14 @@ def getMaxFactorPower(num, factor):
 
 def getFactorNum(num, method='brute'):
 	"""Return the amount of factors for the number given.
-	'num' - number.
-	(optional) 'method' - implementation, which includes 
-	brute-force 'brute', 'prime' - by calculating prime factors 
-	and using the properties of divisor function.
-	http://en.wikipedia.org/wiki/Divisor_function#Properties
+
+	Arguments:
+	num		-- intput number
+	method	-- implementation, which includes 
+			   brute-force 'brute' and 'prime' - by calculating prime factors 
+			   and using the properties of divisor function
+		       http://en.wikipedia.org/wiki/Divisor_function#Properties
+		       (default 'brute')
 	"""
 	if method == 'brute':
 		return len(getFactors(num))
@@ -57,14 +64,20 @@ def getFactorNum(num, method='brute'):
 		' found.')
 
 
-def getFactors(num, primeFactor=False, proper=False, nontrivial=False, method='brute'):
+def getFactors(num, 
+			   primeFactor=False, 
+			   proper=False, 
+			   nontrivial=False, 
+			   method='brute'):
 	"""Return a list of factors for the number given.
-	'num' - number.
-	(optional) 'primeFactor' - whether return prime factor only. 
-	False by default.
-	(optional) 'proper' - proper divisor. False by default.
-	(optional) 'method' - implementation, which includes brute-force 'brute'.
-	'brute' by default.
+
+	Arguments:
+	num 		-- intput number
+	primeFactor	-- only return prime factors (default False)
+	proper		-- only return proper divisors (default False)
+	nontrivial	-- only return non-trivial divisors (default False)
+	method		-- implementation, which includes brute-force 'brute' 
+			 	   (default 'brute')
 	"""
 	if method == 'brute':
 		limit = int(math.sqrt(num))
@@ -103,10 +116,11 @@ def getAmicableNumbers(below, above=220, method='brute'):
 	"""Return a list of amicable numbers.
 	http://en.wikipedia.org/wiki/Amicable_numbers
 	
-	'below' - smaller or equal to.
-	(optional) 'above' - greater or equal to. 220 default.
-	(optional) 'method' - implementation, which includes brute-force 'brute'.
-	'brute' by default.
+	Arguments:
+	below	-- smaller or equal to
+	above	-- greater or equal to (default 220)
+	method	-- implementation, which includes brute-force 'brute'
+			   (default 'brute')
 	"""
 	if above < 0:
 		raise Exception('Perfect numbers must be positive integer.')

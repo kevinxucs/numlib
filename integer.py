@@ -7,7 +7,8 @@
 class IntegerNumber:
 
 	def __init__(self, start=0):
-		"""'start' - the number starts from. 0 by default.
+		"""Arguments:
+		start -- the number starts from (default 0)
 		"""
 		if isInt(start):
 			self.gen = start
@@ -19,14 +20,17 @@ class IntegerNumber:
 		return self
 
 	def next(self):
-		"""Get next integer.
+		"""Return next integer.
 		"""
 		self.gen += 1
 		return (self.gen - 1)
 
 	def reset(self, start=None):
 		"""Reset generator.
-		'start' - if not set, reset to the start number which initialized with.
+
+		Arguments:
+		start -- if not set, reset to the start number which initialized with
+				 (default None)
 		"""
 		if start is None:
 			self.gen = self.start
@@ -41,7 +45,7 @@ class IntegerNumber:
 class EvenNumber(IntegerNumber):
 
 	def next(self):
-		"""Get next even integer.
+		"""Return next even integer.
 		"""
 		self.gen += 2
 		if not isEven(self.gen):
@@ -52,7 +56,7 @@ class EvenNumber(IntegerNumber):
 class OddNumber(IntegerNumber):
 
 	def next(self):
-		"""Get next odd integer.
+		"""Return next odd integer.
 		"""
 		self.gen += 2
 		if not isOdd(self.gen):
