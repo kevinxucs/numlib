@@ -4,7 +4,8 @@
 # module for calculating factors
 
 import math
-import prime, integer
+import prime
+import integer
 
 def isFactor(num, factor):
 	"""Determine whether the factor given is the proper factor of the number.
