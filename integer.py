@@ -2,11 +2,13 @@
 # created by Kaiwen Xu
 #
 # module related with integers
+
 import math
 
 
 class IntegerNumber:
-
+	"""Integer number generator (non-stop).
+	"""
 	def __init__(self, start=0):
 		"""Arguments:
 		start -- the number starts from (default 0)

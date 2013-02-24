@@ -3,8 +3,8 @@
 #
 # module for calculating very large numbers
 
-import math
 import integer
+
 
 def numToDigitArray(num):
 	"""Return an array of int which represent the number by digit.
@@ -17,7 +17,7 @@ def numToDigitArray(num):
 		strArray = str(num)
 		for s in strArray:
 			digitArray.append(int(s))
-	
+
 		return digitArray
 	else:
 		raise ValueError("Number must be integer.")
@@ -25,7 +25,7 @@ def numToDigitArray(num):
 
 def numToShortDigitArray(num, digitArray):
 	"""Parse number into provided digitArray. If the length of digitArray is
-	smaller than the length of num, then only last fitable digits will be 
+	smaller than the length of num, then only last fitable digits will be
 	filled into the array.
 
 	Arguments:
@@ -59,7 +59,7 @@ def digitArrayToNum(digitArray):
 		else:
 			num += d * pow(10, power)
 			power -= 1
-	
+
 	return num
 
 
@@ -69,7 +69,7 @@ def bigpow(x, y):
 	total = 1
 	for c in xrange(0, y):
 		total *= x
-	
+
 	return total
 
 
@@ -83,9 +83,8 @@ def digFromFractGenerator(numerator, denominator):
 	"""
 	if numerator > denominator:
 		numerator = numerator % denominator
-	
+
 	while numerator != 0:
 		numerator = numerator * 10
-		yield int(numerator/denominator)
+		yield int(numerator / denominator)
 		numerator = numerator % denominator
-

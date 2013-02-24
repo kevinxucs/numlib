@@ -1,14 +1,15 @@
 # prime.py
 # created by Kaiwen Xu
-# 
+#
 # module for calculating primes
 
 import math
 import integer
 
-# Prime number generator (non-stop)
-class PrimeNumber:
 
+class PrimeNumber:
+	"""Prime number generator (non-stop).
+	"""
 	def __init__(self, start=2):
 		"""Arguments:
 		start -- the number starts from (default 2)
@@ -18,10 +19,10 @@ class PrimeNumber:
 			self.start = start
 		else:
 			raise ValueError('Start number must be an integer and not less than 2.')
-	
+
 	def __iter__(self):
 		return self
-	
+
 	def next(self):
 		"""Return next prime number.
 		"""
@@ -30,13 +31,13 @@ class PrimeNumber:
 		else:
 			self.gen += 1
 			return (self.gen - 1)
-	
+
 	def reset(self, start=None):
 		"""Reset generator.
 
 		Arguments:
 		start -- if not set, reset to the start number which initialized with
-				 (default None)
+				(default None)
 		"""
 		if start is None:
 			self.gen = self.start
@@ -89,7 +90,7 @@ def getNumPrimes(num):
 	i = 0
 	p = PrimeNumber()
 	list = []
-	
+
 	while i < num:
 		list.append(p.next())
 		i += 1
@@ -103,10 +104,10 @@ def getPrimes(below, above=2, method='erato'):
 	Arguments:
 	below	-- less than or equal to
 	above	-- greater or equal to (default 2)
-	method	-- implementation, which includes brute-force 'brute', 
-			   sieve of eratosthenes 'erato', sieve of atkin 'atkin'
-			   (default 'erato')
-	
+	method	-- implementation, which includes brute-force 'brute',
+				sieve of eratosthenes 'erato', sieve of atkin 'atkin'
+				(default 'erato')
+
 	Suitable cases:
 	'brute'	-- small prime list start from large number
 	'erato'	-- small and medium prime list
@@ -116,10 +117,10 @@ def getPrimes(below, above=2, method='erato'):
 		raise ValueError('Prime numbers must be greater or equal to 2.')
 	elif above > below:
 		raise ValueError("'above' is greater than 'below'.")
-	
+
 	if method == 'brute':
 		return filter(isPrime, range(above, below + 1))
-	
+
 	elif method == 'erato':
 		result = []
 		listlen = below + 1
@@ -137,10 +138,10 @@ def getPrimes(below, above=2, method='erato'):
 			if mask[i]:
 				result.append(i)
 		return result
-	
+
 	elif method == 'atkin':
 		return getPrimesAtkin(below, above, False)
-	
+
 	else:
 		raise RuntimeError(''.join(['No implementation named ', str(method), ' found.']))
 
@@ -163,7 +164,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 	mask = listlen * [False]
 	mask[2] = True
 	mask[3] = True
-	
+
 	for x in xrange(1, sqrtlimit):
 		for y in xrange(1, sqrtlimit):
 			n = 4 * x * x + y * y
@@ -174,7 +175,7 @@ def getPrimesAtkin(below, above=2, thread=False):
 				mask[n] = not mask[n]
 			n = 3 * x * x - y * y
 			if x > y and n <= below and n % 12 == 11:
-				mask[n] = not mask[n]	
+				mask[n] = not mask[n]
 	for n in xrange(5, sqrtlimit):
 		if mask[n]:
 			for k in xrange(n * n, listlen, n * n):
@@ -183,4 +184,3 @@ def getPrimesAtkin(below, above=2, thread=False):
 		if mask[i]:
 			result.append(i)
 	return result
-

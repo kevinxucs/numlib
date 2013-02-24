@@ -3,6 +3,7 @@
 #
 # module related with combinatorics
 
+
 def isPermutations(lst):
 	"""Check whether numbers in the given list are permutations.
 
@@ -35,4 +36,3 @@ def isPermutations(lst):
 						return False
 	else:
 		return True
-
