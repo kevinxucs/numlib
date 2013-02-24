@@ -154,8 +154,8 @@ def getPrimesAtkin(below, above=2, thread=False):
 	thread	-- enable thread (default False)
 
 	NOTICE:
-	Threading support is totally experimental. And it seems like 
-	slower than non-threaded version.
+	Threading has been removed. This function will do exactly the same thing,
+	no matter what thread argument is.
 	"""
 	result = []
 	listlen = below + 1
@@ -164,73 +164,17 @@ def getPrimesAtkin(below, above=2, thread=False):
 	mask[2] = True
 	mask[3] = True
 	
-	if not thread:
-		for x in xrange(1, sqrtlimit):
-			for y in xrange(1, sqrtlimit):
-				n = 4 * x * x + y * y
-				if n <= below and (n % 12 == 1 or n % 12 == 5):
-					mask[n] = not mask[n]
-				n = 3 * x * x + y * y
-				if n <= below and (n % 12 == 7):
-					mask[n] = not mask[n]
-				n = 3 * x * x - y * y
-				if x > y and n <= below and n % 12 == 11:
-					mask[n] = not mask[n]
-	
-	else:
-		import threading
-		class Thread1(threading.Thread):
-
-			def __init__(self, mask, sqrtlimit):
-				threading.Thread.__init__(self)
-				self.mask = mask
-				self.sqrtlimit = sqrtlimit
-			
-			def run(self):
-				for x in xrange(1, self.sqrtlimit):
-					for y in xrange(1, self.sqrtlimit):
-						n = 4 * x * x + y * y
-						if n <= below and (n % 12 == 1 or n % 12 == 5):
-							self.mask[n] = not self.mask[n]
-		
-		class Thread2(threading.Thread):
-
-			def __init__(self, mask, sqrtlimit):
-				threading.Thread.__init__(self)
-				self.mask = mask
-				self.sqrtlimit = sqrtlimit
-
-			def run(self):
-				for x in xrange(1, self.sqrtlimit):
-					for y in xrange(1, self.sqrtlimit):
-						n = 3 * x * x + y * y
-						if n <= below and (n % 12 == 7):
-							self.mask[n] = not self.mask[n]
-		
-		class Thread3(threading.Thread):
-
-			def __init__(self, mask, sqrtlimit):
-				threading.Thread.__init__(self)
-				self.mask = mask
-				self.sqrtlimit = sqrtlimit
-
-			def run(self):
-				for x in xrange(1, self.sqrtlimit):
-					for y in xrange(1, self.sqrtlimit):
-						n = 3 * x * x - y * y
-						if x > y and n <= below and n % 12 == 11:
-							self.mask[n] = not self.mask[n]
-		
-		t1 = Thread1(mask, sqrtlimit)
-		t2 = Thread2(mask, sqrtlimit)
-		t3 = Thread3(mask, sqrtlimit)
-		t1.start()
-		t2.start()
-		t3.start()
-		t1.join()
-		t2.join()
-		t3.join()
-	
+	for x in xrange(1, sqrtlimit):
+		for y in xrange(1, sqrtlimit):
+			n = 4 * x * x + y * y
+			if n <= below and (n % 12 == 1 or n % 12 == 5):
+				mask[n] = not mask[n]
+			n = 3 * x * x + y * y
+			if n <= below and (n % 12 == 7):
+				mask[n] = not mask[n]
+			n = 3 * x * x - y * y
+			if x > y and n <= below and n % 12 == 11:
+				mask[n] = not mask[n]	
 	for n in xrange(5, sqrtlimit):
 		if mask[n]:
 			for k in xrange(n * n, listlen, n * n):
