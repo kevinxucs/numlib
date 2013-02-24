@@ -1,9 +1,10 @@
 # integer.py
 # created by Kaiwen Xu
-# 
+#
 # module related with integers
+import math
 
-# Integer generator (non-stop)
+
 class IntegerNumber:
 
 	def __init__(self, start=0):
@@ -14,7 +15,7 @@ class IntegerNumber:
 			self.gen = start
 			self.start = start
 		else:
-			raise ValueError("Start number must be an integer.") 
+			raise ValueError("Start number must be an integer.")
 
 	def __iter__(self):
 		return self
@@ -30,7 +31,7 @@ class IntegerNumber:
 
 		Arguments:
 		start -- if not set, reset to the start number which initialized with
-				 (default None)
+				(default None)
 		"""
 		if start is None:
 			self.gen = self.start
@@ -39,7 +40,7 @@ class IntegerNumber:
 				self.gen = start
 				self.start = start
 			else:
-				raise ValueError("Start number must be an integer.") 
+				raise ValueError("Start number must be an integer.")
 
 
 class EvenNumber(IntegerNumber):
@@ -76,7 +77,7 @@ def isInt(f):
 
 
 def isSqrtInt(f):
-	if isInt(f) and isInt(sqrt(f)):
+	if isInt(f) and isInt(math.sqrt(f)):
 		return True
 	else:
 		return False
@@ -91,4 +92,3 @@ def isOdd(n):
 
 
 getBinStr = lambda x: x > 0 and str(bin(x))[2:] or "-" + str(bin(x))[3:]
-
