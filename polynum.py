@@ -63,7 +63,7 @@ class PentagonalNumber:
 	
 	def next(self):
 		self.n += self.add
-		seld.add += 3
+		self.add += 3
 		return self.n
 	
 	def reset(self):
