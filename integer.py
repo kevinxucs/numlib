@@ -83,14 +83,11 @@ def isSqrtInt(f):
 
 
 def isEven(n):
-	if n % 2 == 0:
-		return True
-	else:
-		return False
+	return n % 2 == 0
 
 
 def isOdd(n):
-	return not isEven(n)
+	return n & 2 != 0
 
 
 getBinStr = lambda x: x > 0 and str(bin(x))[2:] or "-" + str(bin(x))[3:]
