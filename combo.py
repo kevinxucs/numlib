@@ -2,6 +2,7 @@
 # created by Kaiwen Xu
 #
 # module related with combinatorics
+import operator
 
 
 def isPermutations(lst):
@@ -36,3 +37,9 @@ def isPermutations(lst):
 						return False
 	else:
 		return True
+
+
+def nCk(n, k):
+	"""n choose k.
+	"""
+	return int(round(reduce(operator.mul, (float(n - i) / (i + 1) for i in xrange(k)), 1)))
