@@ -1,6 +1,7 @@
 import time
 
 
+# TODO: not actually working now
 class Timer:
 	def __init__(self):
 		self.start_time = None
